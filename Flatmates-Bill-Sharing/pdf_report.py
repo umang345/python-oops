@@ -2,6 +2,7 @@ from bill import Bill
 from flatmate import Flatmate
 from fpdf import FPDF
 import webbrowser
+import os
 
 class PdfReport:
     """
@@ -41,6 +42,7 @@ class PdfReport:
         pdf.cell(w=100, h=25, txt=flatmate2.name, border=0)
         pdf.cell(w=150, h=25, txt=flatmate2_pay, border=0, ln=1) 
 
+        # Change directory to export, generate and open pdf
+        os.chdir("export")
         pdf.output(self.filename)
-
         webbrowser.open(self.filename)
